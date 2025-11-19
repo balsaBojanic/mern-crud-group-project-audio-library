@@ -56,3 +56,7 @@ Library Management
 
 ![IMG](https://github.com/balsaBojanic/mern-crud-group-project-audio-library/blob/main/images/image%20copy.png?raw=true)
 
+### API
+
+![IMG](https://github.com/balsaBojanic/mern-crud-group-project-audio-library/blob/main/images/Screenshot%202025-11-19%20at%2009.17.04.png?raw=true)
+
