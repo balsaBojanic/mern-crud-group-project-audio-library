@@ -42,6 +42,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/my-songs', authenticateToken, requireArtist, async (req, res) => {
+  try {
+    const songs = await Song.find({ createdBy: req.user.id }).populate('createdBy', 'username');
+    res.json({ songs });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 router.get('/search', async (req, res) => {
   try {
     const { q } = req.query;
@@ -186,15 +195,6 @@ router.post('/', authenticateToken, requireArtist, async (req, res) => {
     const populatedSong = await Song.findById(song._id).populate('createdBy', 'username');
 
     res.status(201).json({ song: populatedSong });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
-
-router.get('/my-songs', authenticateToken, requireArtist, async (req, res) => {
-  try {
-    const songs = await Song.find({ createdBy: req.user.id }).populate('createdBy', 'username');
-    res.json({ songs });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
